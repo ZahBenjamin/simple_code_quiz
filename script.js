@@ -1,19 +1,18 @@
-var startEl = document.querySelector('#start');
-var gameEl = document.querySelector('#game');
-var endEl = document.querySelector('#end');
-var questionsEl = document.querySelector('#questions');
+const startEl = document.querySelector('#start');
+const gameEl = document.querySelector('#game');
+const endEl = document.querySelector('#end');
+const questionsEl = document.querySelector('#questions');
 
-
-var beginBtn = document.querySelector('#begin');
-var initialsInput = document.querySelector('#initials');
+const beginBtn = document.querySelector('#begin');
+const initialsInput = document.querySelector('#initials');
 
 var cursor = 0;
 var score = 100;
 
-var questions = [
+const questions = [
   {
     text: "How much wood could a woodchuck chuck?",
-    possible: [
+    options: [
       "Answer 1",
       "Answer 2",
       "Answer 3",
@@ -23,7 +22,7 @@ var questions = [
   },
   {
     text: "How's your day going?",
-    possible: [
+    options: [
       "Answer 5",
       "Answer 6",
       "Answer 7",
@@ -33,7 +32,7 @@ var questions = [
   },
   {
     text: "Do you like to draw pictures?",
-    possible: [
+    options: [
       "Answer 9",
       "Answer 10",
       "Answer 11",
@@ -42,6 +41,8 @@ var questions = [
     correct: 0
   }
 ];
+
+
 
 function startScreen() {
   startEl.style.display = "block";
@@ -57,14 +58,14 @@ function gameScreen() {
 }
 
 function renderQuestion() {
-  var question = questions[cursor];
-  questionsEl
+  const question = questions[cursor];
+ 
 
-  for (var i = 0; i < question.possible.length; i++) {
-    var item = question.possible[i];
+  for (var i = 0; i < question.options.length; i++) {
+    var item = question.options[i];
     var answerBtn = document.createElement('button');
     answerBtn.textContent = i + 1 + ". " + item;
-    gameEl.appendChild(answerBtn);
+    questionsEl.appendChild(answerBtn);
   }
 }
 
