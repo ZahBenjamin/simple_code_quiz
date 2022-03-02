@@ -59,7 +59,7 @@ function gameScreen() {
 
 function renderQuestion() {
   const question = questions[cursor];
- 
+  questionsEl.innerHTML = '';
 
   for (var i = 0; i < question.options.length; i++) {
     var item = question.options[i];
