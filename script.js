@@ -8,6 +8,7 @@ const initialsInput = document.querySelector('#initials');
 
 var cursor = 0;
 var score = 100;
+var seconds = 90;
 
 const questions = [
   {
@@ -54,6 +55,15 @@ function gameScreen() {
   gameEl.style.display = "block";
   endEl.style.display = "none";
   renderQuestion();
+
+  var timer = setInterval(function(){
+   seconds--;
+    console.log("seconds", seconds);
+    if (seconds < 0){
+    clearInterval(timer)
+  }
+}, 1000);
+
 }
 
 
@@ -81,14 +91,7 @@ function init() {
 // Begin quiz
 // Quiz Timer
 
-var timer = setInterval(function(){
-  var seconds = 90;
-  document.getElementById("score");
-  seconds --;
-  if (seconds < 0){
-    clearInterval(timer)
-  }
-}, 1000);
+
 
 beginBtn.addEventListener('click', gameScreen);
 gameEl.addEventListener('click', function (event) {
@@ -104,6 +107,6 @@ gameEl.addEventListener('click', function (event) {
 });
 
 // TODO: handleInitialSubmit
-endEl.addEventListener('submit', handleInitialSubmit);
+//endEl.addEventListener('submit', handleInitialSubmit);
 
 init();
