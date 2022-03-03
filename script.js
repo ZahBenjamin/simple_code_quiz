@@ -4,6 +4,8 @@ const endEl = document.querySelector('#end');
 const questionsEl = document.querySelector('#questions');
 const titleEl = document.querySelector('#title');
 const scoreEl = document.querySelector('#score');
+const endScoreEl = document.querySelector('#endScore');
+
 
 const beginBtn = document.querySelector('#begin');
 const initialsInput = document.querySelector('#initials');
@@ -11,6 +13,7 @@ const initialsInput = document.querySelector('#initials');
 var cursor = 0;
 var score = 100;
 var seconds = 90;
+var timer;
 
 const questions = [
   {
@@ -61,7 +64,7 @@ function gameScreen() {
 
   scoreEl.textContent = seconds;
 
-  var timer = setInterval(function () {
+  timer = setInterval(function () {
     seconds--;
     scoreEl.textContent = seconds;
     console.log("seconds", seconds);
@@ -90,6 +93,7 @@ function endScreen() {
   endEl.style.display = "block";
 
   clearInterval(timer);
+  endScoreEl.textContent = seconds;
 }
 
 
