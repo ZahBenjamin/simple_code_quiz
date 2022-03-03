@@ -1,1 +1,23 @@
-/* Will add later, wasn't on requirements */
+h1 {
+  text-align: center;
+  font-style: bold;
+  font-size: 60px;
+}
+
+#start {
+  text-align: center;
+  margin: 20px;
+  border: 10px;
+}
+
+#game {
+  text-align: center;
+  margin: 20px;
+  border: 10px;
+}
+
+#end {
+  text-align: center;
+  margin: 20px;
+  border: 10px;
+}
