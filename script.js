@@ -75,7 +75,7 @@ function gameScreen() {
   var timer = setInterval(function () {
     seconds--;
     scoreEl.textContent = seconds;
-   titleEl.textContent = questions.text;
+    titleEl.textContent = questions.text;
     console.log("seconds", seconds);
     if (seconds < 0) {
       clearInterval(timer)
