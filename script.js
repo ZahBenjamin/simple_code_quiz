@@ -11,7 +11,6 @@ const beginBtn = document.querySelector('#begin');
 const initialsInput = document.querySelector('#initials');
 
 var cursor = 0;
-var score = 100;
 var seconds = 90;
 var timer;
 
@@ -96,6 +95,17 @@ function endScreen() {
   endScoreEl.textContent = seconds;
 }
 
+function handleSubmit(event){
+  event.preventDefault();
+
+  let finalScore = endScoreEl.textContent;
+  let initialsEl = document.querySelector('#initials');
+
+  localStorage.setItem("finalScore", JSON.stringify(finalScore));
+  localStorage.setItem("initials", JSON.stringify(initialsEl.value));
+  seconds = 90;
+  initialsEl.value = '';
+};
 
 function init() {
   startScreen();
@@ -109,6 +119,9 @@ gameEl.addEventListener('click', function (event) {
     if(btnValue !== correctAnswer){
       seconds -= 10;
     };
+    if(seconds <= 0){
+      endScreen();
+    };
     cursor++;
     if (cursor < questions.length) {
       renderQuestion();
@@ -117,10 +130,5 @@ gameEl.addEventListener('click', function (event) {
     };
   }
 });
-// register when they click wrong answer, to subtract points AKA lower timer/score
-// 
-
-// TODO: handleInitialSubmit
-//endEl.addEventListener('submit', handleInitialSubmit);
 
 init();
