@@ -95,6 +95,7 @@ function endScreen() {
   endScoreEl.textContent = seconds;
 }
 
+// localStorage submission
 function handleSubmit(event){
   event.preventDefault();
 
@@ -111,6 +112,7 @@ function init() {
   startScreen();
 }
 
+// Event listener
 beginBtn.addEventListener('click', gameScreen);
 gameEl.addEventListener('click', function (event) {
   if (event.target.matches('button')) {
