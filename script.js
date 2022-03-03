@@ -16,7 +16,7 @@ var timer;
 
 const questions = [
   {
-    questionText: "What pets do I have",
+    questionText: "What pets do I have?",
     options: [
       "Woof",
       "Meow Meow",
@@ -36,7 +36,7 @@ const questions = [
     correctAnswer: "yes"
   },
   {
-    questionText: "Is a hot dog a sandwich",
+    questionText: "Is a hot dog a sandwich?",
     options: [
       "yes",
       "no",
