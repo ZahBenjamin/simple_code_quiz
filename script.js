@@ -2,6 +2,8 @@ const startEl = document.querySelector('#start');
 const gameEl = document.querySelector('#game');
 const endEl = document.querySelector('#end');
 const questionsEl = document.querySelector('#questions');
+const titleEl = document.querySelector('#title');
+const scoreEl = document.querySelector('#score');
 
 const beginBtn = document.querySelector('#begin');
 const initialsInput = document.querySelector('#initials');
@@ -12,36 +14,48 @@ var seconds = 90;
 
 const questions = [
   {
-    text: "What pets do I have",
+    question: "What pets do I have",
     options: [
       "Woof",
       "Meow Meow",
       "Chirp Chirp",
       "Oink Oink",
     ],
-    correct: 2
+    correctAnswer: 1
   },
   {
-    text: "Do I make the best creme brulee?",
+    question: "Do I make the best creme brulee?",
     options: [
       "no",
       "no",
       "no",
       "yes",
     ],
-    correct: 3
+    correctAnswer: 3
   },
   {
-    text: "Is a hot dog a sandwich",
+    question: "Is a hot dog a sandwich",
     options: [
       "yes",
       "no",
       "no",
       "no",
     ],
-    correct: 0
+    correctAnswer: 0
   }
 ];
+
+// Question answering
+// function showQuestions(questions, gameEl){
+//   var output = [];
+//   var options;
+
+//   for(var i = 0; i < options.length; i++){
+//     answers[];
+
+//   }
+
+// }
 
 // Screen displays || Render
 function startScreen() {
@@ -56,16 +70,18 @@ function gameScreen() {
   endEl.style.display = "none";
   renderQuestion();
 
-  var timer = setInterval(function(){
-   seconds--;
+  // TODO Display timer
+  scoreEl.textContent = seconds;
+  var timer = setInterval(function () {
+    seconds--;
+    scoreEl.textContent = seconds;
+   titleEl.textContent = questions.text;
     console.log("seconds", seconds);
-    if (seconds < 0){
-    clearInterval(timer)
-  }
-}, 1000);
-
-}
-
+    if (seconds < 0) {
+      clearInterval(timer)
+    }
+  }, 1000);
+};
 
 function renderQuestion() {
   const question = questions[cursor];
@@ -87,11 +103,6 @@ function endScreen() {
 function init() {
   startScreen();
 }
-
-// Begin quiz
-// Quiz Timer
-
-
 
 beginBtn.addEventListener('click', gameScreen);
 gameEl.addEventListener('click', function (event) {
