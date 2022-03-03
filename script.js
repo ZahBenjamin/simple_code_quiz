@@ -21,7 +21,7 @@ const questions = [
       "Chirp Chirp",
       "Oink Oink",
     ],
-    correctAnswer: 1
+    correctAnswer: "Meow Meow"
   },
   {
     questionText: "Do I make the best creme brulee?",
@@ -31,7 +31,7 @@ const questions = [
       "no",
       "yes",
     ],
-    correctAnswer: 3
+    correctAnswer: "yes"
   },
   {
     questionText: "Is a hot dog a sandwich",
@@ -41,7 +41,7 @@ const questions = [
       "no",
       "no",
     ],
-    correctAnswer: 0
+    correctAnswer: "yes"
   }
 ];
 
@@ -79,6 +79,7 @@ function renderQuestion() {
   question.options.forEach((item, i) => {
     var answerBtn = document.createElement('button');
     answerBtn.textContent = i + 1 + ". " + item;
+    answerBtn.value = item;
     questionsEl.appendChild(answerBtn);
   })
 }
@@ -87,6 +88,8 @@ function endScreen() {
   startEl.style.display = "none";
   gameEl.style.display = "none";
   endEl.style.display = "block";
+
+  clearInterval(timer);
 }
 
 
@@ -97,15 +100,21 @@ function init() {
 beginBtn.addEventListener('click', gameScreen);
 gameEl.addEventListener('click', function (event) {
   if (event.target.matches('button')) {
-    console.log(event.target);
+    var btnValue = event.target.value;
+    var correctAnswer = questions[cursor].correctAnswer;
+    if(btnValue !== correctAnswer){
+      seconds -= 10;
+    };
     cursor++;
     if (cursor < questions.length) {
       renderQuestion();
     } else {
       endScreen();
-    }
+    };
   }
 });
+// register when they click wrong answer, to subtract points AKA lower timer/score
+// 
 
 // TODO: handleInitialSubmit
 //endEl.addEventListener('submit', handleInitialSubmit);
