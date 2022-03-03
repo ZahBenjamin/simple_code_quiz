@@ -14,7 +14,7 @@ var seconds = 90;
 
 const questions = [
   {
-    question: "What pets do I have",
+    questionText: "What pets do I have",
     options: [
       "Woof",
       "Meow Meow",
@@ -24,7 +24,7 @@ const questions = [
     correctAnswer: 1
   },
   {
-    question: "Do I make the best creme brulee?",
+    questionText: "Do I make the best creme brulee?",
     options: [
       "no",
       "no",
@@ -34,7 +34,7 @@ const questions = [
     correctAnswer: 3
   },
   {
-    question: "Is a hot dog a sandwich",
+    questionText: "Is a hot dog a sandwich",
     options: [
       "yes",
       "no",
@@ -45,17 +45,6 @@ const questions = [
   }
 ];
 
-// Question answering
-// function showQuestions(questions, gameEl){
-//   var output = [];
-//   var options;
-
-//   for(var i = 0; i < options.length; i++){
-//     answers[];
-
-//   }
-
-// }
 
 // Screen displays || Render
 function startScreen() {
@@ -70,12 +59,11 @@ function gameScreen() {
   endEl.style.display = "none";
   renderQuestion();
 
-  // TODO Display timer
   scoreEl.textContent = seconds;
+
   var timer = setInterval(function () {
     seconds--;
     scoreEl.textContent = seconds;
-    titleEl.textContent = questions.text;
     console.log("seconds", seconds);
     if (seconds < 0) {
       clearInterval(timer)
@@ -83,9 +71,11 @@ function gameScreen() {
   }, 1000);
 };
 
+
 function renderQuestion() {
-  const question = questions[cursor];
   questionsEl.innerHTML = '';
+  const question = questions[cursor];
+  titleEl.textContent = question.questionText;
   question.options.forEach((item, i) => {
     var answerBtn = document.createElement('button');
     answerBtn.textContent = i + 1 + ". " + item;
